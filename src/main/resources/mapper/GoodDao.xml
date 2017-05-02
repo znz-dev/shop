@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.znz.dao.GoodDao">
+
+    <select id="queryGoodById" resultType="Good" parameterType="int">
+        SELECT g.good_id, g.name, g.price, g.status, g.description, g.shop_id, g.sales, g.remainder, g.create_time,
+        s.name as "shop.name"
+        FROM good g
+        INNER JOIN shop s ON g.shop_id = s.shop_id
+        WHERE g.good_id = #{goodId}
+    </select>
+
+    <select id="queryGoodsByParams" resultType="Good">
+        SELECT g.good_id, g.name, g.price, g.status, g.description, g.shop_id, g.sales, g.remainder, g.create_time,
+        s.name as "shop.name"
+        FROM good g
+        INNER JOIN shop s ON g.shop_id = s.shop_id
+    </select>
+</mapper>

@@ -10,10 +10,9 @@
         WHERE user_id = #{userId}
     </select>
 
-    <!--<select id="queryAll" resultType="User">
+    <select id="queryUsersByParams" resultType="User">
         SELECT user_id, username, password, phone, email, real_name, avatar, description, create_time
         FROM user
         order by create_time DESC
-        limit #{offset}, #{limit}
-    </select>-->
+    </select>
 </mapper>

@@ -8,6 +8,8 @@ import org.znz.entity.User;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -29,7 +31,12 @@ public class UserDaoTest {
     }
 
     @Test
-    public void updateUserByParams() throws Exception {
+    public void queryUsersByParams() throws Exception {
+        List<User> userList = userDao.queryUsersByParams();
+        for(User user : userList) {
+            System.out.println(user.getClass());
+            System.out.println(user);
+        }
     }
 
 }
