@@ -23,6 +23,8 @@ public class Good {
 
     private Date createTime;
 
+    private int shopId;
+
     private Shop shop;
 
     @Override
@@ -102,6 +104,14 @@ public class Good {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 
     public Shop getShop() {
