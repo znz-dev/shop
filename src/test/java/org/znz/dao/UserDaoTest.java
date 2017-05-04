@@ -32,7 +32,7 @@ public class UserDaoTest {
 
     @Test
     public void queryUsersByParams() throws Exception {
-        List<User> userList = userDao.queryUsersByParams();
+        List<User> userList = userDao.queryUsersByParams(0, 1);
         for(User user : userList) {
             System.out.println(user.getClass());
             System.out.println(user);
