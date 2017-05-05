@@ -16,4 +16,9 @@
         order by create_time DESC
         limit #{offset}, #{limit}
     </select>
+
+    <select id="queryUsersCountByParams" resultType="int">
+        SELECT COUNT(*)
+        FROM user
+    </select>
 </mapper>

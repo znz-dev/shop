@@ -1,16 +1,19 @@
 package org.znz.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 
 /**
  * Created by zhouxin on 17-4-30.
  */
+
 public class User {
 
     private int userId;
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
     private String phone;

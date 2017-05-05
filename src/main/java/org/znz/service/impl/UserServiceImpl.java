@@ -3,6 +3,7 @@ package org.znz.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.znz.dao.UserDao;
+import org.znz.dto.user.UserList;
 import org.znz.entity.User;
 import org.znz.service.UserService;
 
@@ -23,7 +24,11 @@ public class UserServiceImpl implements UserService {
         return userDao.queryUserById(userId);
     }
 
-    public List<User> getUsersByParams(int offset, int limit) {
-        return userDao.queryUsersByParams(offset, limit);
+    public UserList getUsersByParams(int offset, int limit) {
+        List<User> userList = userDao.queryUsersByParams(offset, limit);
+        int count = userDao.queryUsersCountByParams();
+        int pages = (count + limit - 1) / limit;
+
+        return new UserList(pages, userList);
     }
 }

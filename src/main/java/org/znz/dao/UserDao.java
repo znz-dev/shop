@@ -16,4 +16,6 @@ public interface UserDao {
 
     List<User> queryUsersByParams(@Param("offset") int offset, @Param("limit") int limit);
 
+    int queryUsersCountByParams();
+
 }
