@@ -22,4 +22,6 @@ public interface UserDao {
 
     int queryUsersCountByParams();
 
+    int updateUserByParams(User user);
+
 }

@@ -56,4 +56,23 @@ public class UserServiceImpl implements UserService {
         user = userDao.queryUserByName(username);
         return new View<UserDetail>(new UserDetail(user));
     }
+
+    public View<UserDetail> updateUserByParams(int userId, User user) {
+        user.setUserId(userId);
+        if (userDao.queryUserById(userId) == null) {
+            return new View<UserDetail>(false, "用户不存在");
+        }
+
+        try {
+            int count = userDao.updateUserByParams(user);
+            if (count == 0) {
+                return new View<UserDetail>(false, "更新失败");
+            }
+            user = userDao.queryUserById(userId);
+            return new View<UserDetail>(new UserDetail(user));
+        } catch (Exception e) {
+            return new View<UserDetail>(false, e.getMessage());
+        }
+
+    }
 }

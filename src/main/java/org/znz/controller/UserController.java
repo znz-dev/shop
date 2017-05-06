@@ -20,6 +20,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 根据用户id查询用户
+     * @param userId
+     * @return
+     */
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View<UserDetail> show(@PathVariable("userId") int userId){
@@ -31,6 +36,12 @@ public class UserController {
         return new View<UserDetail>(userDetail);
     }
 
+    /**
+     * 获取所有用户
+     * @param page
+     * @param size
+     * @return
+     */
     @RequestMapping(value = "/userList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View<UserList> index(@RequestParam(value = "page", defaultValue = "1") Integer page,
@@ -46,10 +57,22 @@ public class UserController {
         return new View<UserList>(userList);
     }
 
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View<UserDetail> register(@ModelAttribute User user) {
 
         return userService.registerUserByParams(user);
+    }
+
+    @RequestMapping(value = "/{userId}", method = RequestMethod.PUT, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View<UserDetail> update(@PathVariable("userId") int userId, @ModelAttribute User user) {
+
+        return userService.updateUserByParams(userId, user);
     }
 }

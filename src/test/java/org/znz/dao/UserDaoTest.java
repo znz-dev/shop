@@ -51,4 +51,13 @@ public class UserDaoTest {
         System.out.println(a);
     }
 
+    @Test
+    public void updateUserByParams() throws Exception {
+        User user = new User();
+        user.setPassword("lalala");
+        user.setUserId(1000);
+        int count = userDao.updateUserByParams(user);
+        System.out.println(count);
+    }
+
 }
