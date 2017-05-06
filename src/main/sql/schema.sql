@@ -5,7 +5,7 @@ use shop;
 -- 创建用户表
 CREATE TABLE user(
   user_id INT NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  username VARCHAR(10) NOT NULL COMMENT '用户名',
+  username VARCHAR(20) NOT NULL COMMENT '用户名',
   password VARCHAR(18) NOT NULL COMMENT '用户密码',
   phone VARCHAR(20) COMMENT '电话号码',
   email VARCHAR(30) COMMENT '邮箱地址',

@@ -1,6 +1,8 @@
 package org.znz.service;
 
 import org.apache.ibatis.annotations.Param;
+import org.znz.dto.common.View;
+import org.znz.dto.user.UserDetail;
 import org.znz.dto.user.UserList;
 import org.znz.entity.User;
 
@@ -17,5 +19,6 @@ public interface UserService {
 
     UserList getUsersByParams(int offset, int limit);
 
+    View<UserDetail> registerUserByParams(User user);
 //    int registerUser();
 }

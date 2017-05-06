@@ -1,10 +1,12 @@
 package org.znz.dao;
 
+import com.alibaba.druid.util.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.znz.entity.User;
+import org.znz.helper.Validator;
 
 import javax.annotation.Resource;
 
@@ -37,6 +39,16 @@ public class UserDaoTest {
             System.out.println(user.getClass());
             System.out.println(user);
         }
+    }
+
+    @Test
+    public void emptyTest(){
+        String a = "   dfsf dfadsf  ";
+        String b = "fasfa";
+        String c = "  fda ";
+        String[] userParams = {a, b, c};
+        System.out.println(Validator.blank(userParams));
+        System.out.println(a);
     }
 
 }

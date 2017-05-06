@@ -4,10 +4,31 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.znz.dao.UserDao">
 
+    <insert id="insertUserByParams" parameterType="User" >
+        INSERT INTO user
+        (user_id, username, password, phone, email, real_name, avatar, description)
+        VALUES
+        (#{userId},
+         #{username,jdbcType=VARCHAR},
+         #{password},
+         #{phone},
+         #{email},
+         #{realName},
+         #{avatar},
+         #{description}
+        )
+    </insert>
+
     <select id="queryUserById" resultType="User" parameterType="int">
         SELECT user_id, username, password, phone, email, real_name, avatar, description, create_time
         FROM user
         WHERE user_id = #{userId}
+    </select>
+
+    <select id="queryUserByName" resultType="User" parameterType="String">
+        SELECT user_id, username, password, phone, email, real_name, avatar, description, create_time
+        FROM user
+        WHERE username = #{userName}
     </select>
 
     <select id="queryUsersByParams" resultType="User">

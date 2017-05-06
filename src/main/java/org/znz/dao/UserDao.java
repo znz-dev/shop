@@ -10,7 +10,11 @@ import java.util.List;
  */
 public interface UserDao {
 
+    int insertUserByParams(User user);
+
     User queryUserById(int userId);
+
+    User queryUserByName(String username);
 
 //    User queryUserByUsername(String username);
 

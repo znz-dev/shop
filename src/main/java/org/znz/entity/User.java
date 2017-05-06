@@ -1,6 +1,7 @@
 package org.znz.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 /**
@@ -21,6 +22,10 @@ public class User {
     private String email;
 
     private String realName;
+
+    private String avatar;
+
+    private String description;
 
     private Date createTime;
 
@@ -82,6 +87,22 @@ public class User {
 
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreateTime() {

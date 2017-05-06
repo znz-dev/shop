@@ -9,12 +9,12 @@ public class View<T> {
     private T data;
 
     public View(T data) {
-        this.status = new Status();
+        this.status = new Status(true, "");
         this.data = data;
     }
 
-    public View(String message) {
-        this.status = new Status(message);
+    public View(Boolean success, String message) {
+        this.status = new Status(success, message);
     }
 
     public Status getStatus() {
@@ -38,12 +38,8 @@ class Status {
     private Boolean success;
     private String message;
 
-    public Status() {
-        this.success = true;
-    }
-
-    public Status(String message) {
-        this.success = false;
+    public Status(Boolean success, String message) {
+        this.success = success;
         this.message = message;
     }
 

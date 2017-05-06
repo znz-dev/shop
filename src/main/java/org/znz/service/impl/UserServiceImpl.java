@@ -1,10 +1,14 @@
 package org.znz.service.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.znz.dao.UserDao;
+import org.znz.dto.common.View;
+import org.znz.dto.user.UserDetail;
 import org.znz.dto.user.UserList;
 import org.znz.entity.User;
+import org.znz.helper.Validator;
 import org.znz.service.UserService;
 
 import java.util.List;
@@ -30,5 +34,26 @@ public class UserServiceImpl implements UserService {
         int pages = (count + limit - 1) / limit;
 
         return new UserList(pages, userList);
+    }
+
+    public View<UserDetail> registerUserByParams(User user) {
+        String username = user.getUsername();
+        String password = user.getPassword();
+        String[] mustParams = {username, password};
+        if (Validator.blank(mustParams)) {
+            return new View<UserDetail>(false, "缺少参数");
+        }
+
+        if (userDao.queryUserByName(user.getUsername()) != null){
+            return new View<UserDetail>(false, "用户名已存在");
+        }
+
+        try {
+            userDao.insertUserByParams(user);
+        } catch (Exception e) {
+            return new View<UserDetail>(false, e.getMessage());
+        }
+        user = userDao.queryUserByName(username);
+        return new View<UserDetail>(new UserDetail(user));
     }
 }
