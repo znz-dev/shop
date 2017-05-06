@@ -17,7 +17,7 @@ public interface UserService {
 
 //    List<User> getUsersByParams(int offset, int limit);
 
-    UserList getUsersByParams(int offset, int limit);
+    UserList getUsersByParams(User user, int offset, int limit);
 
     View<UserDetail> registerUserByParams(User user);
 //

@@ -28,9 +28,9 @@ public class UserServiceImpl implements UserService {
         return userDao.queryUserById(userId);
     }
 
-    public UserList getUsersByParams(int offset, int limit) {
-        List<User> userList = userDao.queryUsersByParams(offset, limit);
-        int count = userDao.queryUsersCountByParams();
+    public UserList getUsersByParams(User user, int offset, int limit) {
+        List<User> userList = userDao.queryUsersByParams(user, offset, limit);
+        int count = userDao.queryUsersCountByParams(user);
         int pages = (count + limit - 1) / limit;
 
         return new UserList(pages, userList);

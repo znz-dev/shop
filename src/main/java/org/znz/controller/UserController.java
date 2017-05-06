@@ -45,7 +45,8 @@ public class UserController {
     @RequestMapping(value = "/userList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View<UserList> index(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                @RequestParam(value = "size", defaultValue = "6") Integer size) {
+                                @RequestParam(value = "size", defaultValue = "6") Integer size,
+                                @ModelAttribute User user) {
         if (page <= 0) {
             page = 1;
         }
@@ -53,7 +54,7 @@ public class UserController {
             size = 6;
         }
         int offset = (page-1) * size;
-        UserList userList = userService.getUsersByParams(offset, size);
+        UserList userList = userService.getUsersByParams(user, offset, size);
         return new View<UserList>(userList);
     }
 

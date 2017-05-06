@@ -18,9 +18,9 @@ public interface UserDao {
 
 //    User queryUserByUsername(String username);
 
-    List<User> queryUsersByParams(@Param("offset") int offset, @Param("limit") int limit);
+    List<User> queryUsersByParams(@Param("user") User user, @Param("offset") int offset, @Param("limit") int limit);
 
-    int queryUsersCountByParams();
+    int queryUsersCountByParams(@Param("user") User user);
 
     int updateUserByParams(User user);
 

@@ -34,13 +34,25 @@
     <select id="queryUsersByParams" resultType="User">
         SELECT user_id, username, password, phone, email, real_name, avatar, description, create_time
         FROM user
+        <where>
+            <if test="user.username != null">username LIKE '%' #{user.username} '%'</if>
+            <if test="user.phone != null">AND phone = #{user.phone}</if>
+            <if test="user.email != null">AND email = #{user.email}</if>
+            <if test="user.realName != null">AND real_name = #{user.realName}</if>
+        </where>
         order by create_time DESC
-        limit #{offset}, #{limit}u
+        limit #{offset}, #{limit}
     </select>
 
     <select id="queryUsersCountByParams" resultType="int">
         SELECT COUNT(*)
         FROM user
+        <where>
+            <if test="user.username != null">username LIKE '%' #{user.username} '%'</if>
+            <if test="user.phone != null">AND phone = #{user.phone}</if>
+            <if test="user.email != null">AND email = #{user.email}</if>
+            <if test="user.realName != null">AND real_name = #{user.realName}</if>
+        </where>
     </select>
 
     <update id="updateUserByParams" parameterType="User">
