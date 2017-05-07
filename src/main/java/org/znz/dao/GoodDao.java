@@ -1,5 +1,6 @@
 package org.znz.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.znz.entity.Good;
 
 import java.util.List;
@@ -11,5 +12,6 @@ public interface GoodDao {
 
     Good queryGoodById(int goodId);
 
-    List<Good> queryGoodsByParams();
+    List<Good> queryGoodsByParams(@Param("good") Good good, @Param("offset") int offset, @Param("limit") int limit);
+    int queryGoodsCountByParams(@Param("good") Good good);
 }

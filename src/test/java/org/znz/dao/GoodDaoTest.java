@@ -30,7 +30,8 @@ public class GoodDaoTest {
 
     @Test
     public void queryGoodsByParams() throws Exception {
-        List<Good> goodList = goodDao.queryGoodsByParams();
+        Good good1 = new Good();
+        List<Good> goodList = goodDao.queryGoodsByParams(good1, 0, 1);
         for(Good good : goodList) {
             System.out.println(good.getClass());
             System.out.println(good);

@@ -1,6 +1,5 @@
 package org.znz.service;
 
-import org.apache.ibatis.annotations.Param;
 import org.znz.dto.common.View;
 import org.znz.dto.user.UserDetail;
 import org.znz.dto.user.UserList;

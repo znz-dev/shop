@@ -17,5 +17,21 @@
         s.name as "shop.name"
         FROM good g
         INNER JOIN shop s ON g.shop_id = s.shop_id
+        <where>
+            <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
+        </where>
+        order by create_time DESC
+        limit #{offset}, #{limit}
     </select>
+
+    <select id="queryGoodsCountByParams" resultType="int">
+        SELECT COUNT(*)
+        FROM good g
+        INNER JOIN shop s ON g.shop_id = s.shop_id
+        <where>
+            <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
+        </where>
+    </select>
+
+
 </mapper>
