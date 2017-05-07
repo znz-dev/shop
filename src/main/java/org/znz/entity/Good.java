@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class Good {
 
-    private int good_id;
+    private int goodId;
 
     private String name;
 
@@ -30,7 +30,7 @@ public class Good {
     @Override
     public String toString() {
         return "Good{" +
-                "good_id=" + good_id +
+                "good_id=" + goodId +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", status=" + status +
@@ -42,12 +42,12 @@ public class Good {
                 '}';
     }
 
-    public int getGood_id() {
-        return good_id;
+    public int getGoodId() {
+        return goodId;
     }
 
-    public void setGood_id(int good_id) {
-        this.good_id = good_id;
+    public void setGoodId(int goodId) {
+        this.goodId = goodId;
     }
 
     public String getName() {

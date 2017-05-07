@@ -14,4 +14,6 @@ public interface GoodService {
 
     View<GoodList> getGoodsByParams(Good good, int page, int size);
 
+    View<GoodDetail> createGoodByParams(Good good);
+
 }

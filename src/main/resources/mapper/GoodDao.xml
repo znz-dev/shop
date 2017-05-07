@@ -4,6 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.znz.dao.GoodDao">
 
+    <insert id="createGoodByParams" parameterType="Good">
+        INSERT INTO good
+        (good_id, name, price, description, shop_id, remainder)
+        VALUES
+        (#{goodId},
+         #{name},
+         #{price},
+         #{description},
+         #{shopId},
+         #{remainder}
+        )
+    </insert>
+
     <select id="queryGoodById" resultType="Good" parameterType="int">
         SELECT g.good_id, g.name, g.price, g.status, g.description, g.shop_id, g.sales, g.remainder, g.create_time,
         s.name as "shop.name"

@@ -46,4 +46,19 @@ public class GoodServiceImpl implements GoodService {
         }
     }
 
+    public View<GoodDetail> createGoodByParams(Good good) {
+
+        try {
+            int count;
+            count = goodDao.createGoodByParams(good);
+            if (count <= 0) {
+                return new View<GoodDetail>(false, "插入失败");
+            }
+            //TODO 判断新增的商品是否属于某一个店铺
+            return new View<GoodDetail>(true, "插入成功");
+        } catch (Exception e) {
+            return new View<GoodDetail>(false, e.getMessage());
+        }
+    }
+
 }

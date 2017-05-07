@@ -19,6 +19,13 @@ public class GoodController {
     @Autowired
     private GoodService goodService;
 
+    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View<GoodDetail> create(@ModelAttribute Good good){
+
+        return  goodService.createGoodByParams(good);
+    }
+
     @RequestMapping(value = "/goodList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View<GoodList> index(@RequestParam(value = "page", defaultValue = "1") Integer page,
