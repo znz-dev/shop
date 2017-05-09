@@ -3,3 +3,7 @@
 *.iml
 target/
 src/main/resources/jdbc.properties
+.classpath
+.project
+.settings/
+result.json
