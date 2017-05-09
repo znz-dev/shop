@@ -16,7 +16,7 @@ import org.znz.service.UserService;
 /**
  * Created by zhouxin on 17-5-4.
  */
-@CrossOrigin
+@CrossOrigin(origins = "http://domain2.com", maxAge = 3600)
 @Controller
 @RequestMapping("/user")
 public class UserController {
