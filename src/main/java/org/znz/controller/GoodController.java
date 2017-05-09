@@ -12,6 +12,7 @@ import org.znz.service.GoodService;
 /**
  * Created by zhouxin on 17-5-7.
  */
+@CrossOrigin
 @Controller
 @RequestMapping("/good")
 public class GoodController {

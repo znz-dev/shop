@@ -61,3 +61,15 @@ VALUES
   ('单身狗粮', 11.11, 2, 1111),
   ('金猫砂', 50, 3, 500),
   ('指南针', 10, 4, 100);
+
+-- 创建消息表
+CREATE TABLE message(
+  message_id INT NOT NULL AUTO_INCREMENT COMMENT '消息ID',
+  from_id INT NOT NULL COMMENT '发送人ID',
+  to_id INT NOT NULL COMMENT '收件人ID',
+  title VARCHAR(20) NOT NULL COMMENT '消息标题',
+  content VARCHAR(100) NOT NULL COMMENT '消息内容',
+  create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  status INT NOT NULL DEFAULT 1 COMMENT '消息状态',
+  PRIMARY KEY (message_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='消息表';

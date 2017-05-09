@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.znz.dao.MessageDao">
+
+    <insert id="createMessageByParams" parameterType="Message">
+        INSERT INTO message
+        (message_id, from_id, to_id, title, content, create_time)
+        VALUES
+        (#{messageId},
+         #{fromId},
+         #{toId},
+         #{title},
+         #{content},
+         #{createTime}
+        )
+    </insert>
+
+    <select id="queryMessageById" resultType="Message" parameterType="int">
+        SELECT m.message_id, m.from_id, m.to_id, m.title, m.content, m.create_time, m.status,
+        f.user_id as "from.userId",
+        f.username as "from.username",
+        t.user_id as "to.userId",
+        t.username as "to.username"
+        FROM message m
+        INNER JOIN user f ON m.from_id = f.user_id
+        INNER JOIN user t on m.to_id = t.user_id
+        WHERE m.message_id = #{messageId}
+    </select>
+
+    <update id="updateMessageStatus" >
+        UPDATE message
+        SET
+          status = #{status}
+        WHERE
+          message_id = #{messageId}
+    </update>
+
+    <select id="queryMessagesByParams" resultType="Message">
+        SELECT m.message_id, m.from_id, m.to_id, m.title, m.content, m.create_time, m.status,
+        f.user_id as "from.userId",
+        f.username as "from.username",
+        t.user_id as "to.userId",
+        t.username as "to.username"
+        FROM message m
+        INNER JOIN user f ON m.from_id = f.user_id
+        INNER JOIN user t on m.to_id = t.user_id
+        <where>
+            (m.from_id = #{userId} OR m.to_id = #{userId})
+            <if test="message.fromId != 0">AND m.from_id = #{message.fromId}</if>
+            <if test="message.toId != 0">AND m.to_id = #{message.toId}</if>
+            <if test="message.status != 0">AND m.status = #{message.status}</if>
+        </where>
+        order by create_time DESC
+        limit #{offset}, #{limit}
+    </select>
+
+    <select id="queryMessagesCountByParams" resultType="int">
+        SELECT COUNT(*)
+        FROM message m
+        INNER JOIN user f ON m.from_id = f.user_id
+        INNER JOIN user t on m.to_id = t.user_id
+        <where>
+            (m.from_id = #{userId} OR m.to_id = #{userId})
+            <if test="message.fromId != 0">AND m.from_id = #{message.fromId}</if>
+            <if test="message.toId != 0">AND m.to_id = #{message.toId}</if>
+            <if test="message.status != 0">AND m.status = #{message.status}</if>
+        </where>
+    </select>
+
+    <!--<delete id="deleteMessageById" parameterType="int">-->
+        <!--DELETE-->
+    <!--</delete>-->
+
+    <!--<select id="queryGoodById" resultType="Good" parameterType="int">
+        SELECT g.good_id, g.name, g.price, g.status, g.description, g.shop_id, g.sales, g.remainder, g.create_time,
+        s.name as "shop.name"
+        FROM good g
+        INNER JOIN shop s ON g.shop_id = s.shop_id
+        WHERE g.good_id = #{goodId}
+    </select>
+
+    <select id="queryGoodsByParams" resultType="Good">
+        SELECT g.good_id, g.name, g.price, g.status, g.description, g.shop_id, g.sales, g.remainder, g.create_time,
+        s.name as "shop.name"
+        FROM good g
+        INNER JOIN shop s ON g.shop_id = s.shop_id
+        <where>
+            <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
+        </where>
+        order by create_time DESC
+        limit #{offset}, #{limit}
+    </select>
+
+    <select id="queryGoodsCountByParams" resultType="int">
+        SELECT COUNT(*)
+        FROM good g
+        INNER JOIN shop s ON g.shop_id = s.shop_id
+        <where>
+            <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
+        </where>
+    </select>-->
+
+
+</mapper>

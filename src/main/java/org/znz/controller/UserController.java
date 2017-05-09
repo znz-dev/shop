@@ -4,21 +4,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.znz.dto.common.View;
+import org.znz.dto.message.MessageList;
 import org.znz.dto.user.UserDetail;
 import org.znz.dto.user.UserList;
+import org.znz.entity.Message;
 import org.znz.entity.User;
+import org.znz.service.MessageService;
 import org.znz.service.UserService;
 
 
 /**
  * Created by zhouxin on 17-5-4.
  */
+@CrossOrigin
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MessageService messageService;
 
     /**
      * 根据用户id查询用户
@@ -75,5 +82,15 @@ public class UserController {
     public View<UserDetail> update(@PathVariable("userId") int userId, @ModelAttribute User user) {
 
         return userService.updateUserByParams(userId, user);
+    }
+
+    @RequestMapping(value = "/{userId}/messageList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View<MessageList> messageList(@ModelAttribute Message message,
+                                         @PathVariable("userId") int userId,
+                                         @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                         @RequestParam(value = "size", defaultValue = "6") Integer size) {
+
+        return messageService.getMessagesByParams(message, userId, page, size);
     }
 }
