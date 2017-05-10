@@ -73,3 +73,33 @@ CREATE TABLE message(
   status INT NOT NULL DEFAULT 1 COMMENT '消息状态',
   PRIMARY KEY (message_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='消息表';
+
+-- 创建订单表
+CREATE TABLE order(
+  order_id INT NOT NULL AUTO_INCREMENT COMMENT '订单ID',
+  user_id INT NOT NULL COMMENT '用户ID',
+  create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  status INT NOT NULL DEFAULT 1 COMMENT '订单状态',
+  PRIMARY KEY (order_id)
+)ENGINE=InnoDB AUTO_INCREMENT=100000 DEFAULT CHARSET=utf8 COMMENT='消息表';
+
+-- 订单子
+# CREATE TABLE order_item(
+#   order_id INT NOT NULL COMMENT '订单ID',
+#
+# )
+
+-- 商品分类
+CREATE TABLE category(
+  category_id INT NOT NULL AUTO_INCREMENT COMMENT '分类ID',
+  name VARCHAR(10) NOT NULL COMMENT '分类名称',
+  create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (category_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='分类表';
+
+INSERT into category(name)
+VALUES
+  ('手表'),
+  ('宠物口粮'),
+  ('户外'),
+  ('计算机')
