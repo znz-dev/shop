@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.znz.dao.ShopDao">
 
-    <select id="queryShopById" resultType="Shop" parameterType="int">
+    <!--<select id="queryShopById" resultType="Shop" parameterType="int">
         SELECT s.shop_id, s.name, s.avatar, s.description, s.owner_id, s.create_time,
         u.username as "owner.username"
         FROM shop s
@@ -21,5 +21,5 @@
         u.username as "owner.username"
         FROM shop s
         INNER JOIN user u ON s.owner_id = u.user_id
-    </select>
+    </select>-->
 </mapper>

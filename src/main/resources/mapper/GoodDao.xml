@@ -6,30 +6,30 @@
 
     <insert id="createGoodByParams" parameterType="Good">
         INSERT INTO good
-        (good_id, name, price, description, shop_id, remainder)
+        (good_id, name, price, description, /*shop_id,*/ remainder)
         VALUES
         (#{goodId},
          #{name},
          #{price},
          #{description},
-         #{shopId},
+         /*#{shopId},*/
          #{remainder}
         )
     </insert>
 
     <select id="queryGoodById" resultType="Good" parameterType="int">
-        SELECT g.good_id, g.name, g.price, g.status, g.description, g.shop_id, g.sales, g.remainder, g.create_time,
-        s.name as "shop.name"
+        SELECT g.good_id, g.name, g.price, g.status, g.description, /*g.shop_id,*/ g.sales, g.remainder, g.create_time
+        /*s.name as "shop.name"*/
         FROM good g
-        INNER JOIN shop s ON g.shop_id = s.shop_id
+        /*INNER JOIN shop s ON g.shop_id = s.shop_id*/
         WHERE g.good_id = #{goodId}
     </select>
 
     <select id="queryGoodsByParams" resultType="Good">
-        SELECT g.good_id, g.name, g.price, g.status, g.description, g.shop_id, g.sales, g.remainder, g.create_time,
-        s.name as "shop.name"
+        SELECT g.good_id, g.name, g.price, g.status, g.description, /*g.shop_id,*/ g.sales, g.remainder, g.create_time/*,
+        s.name as "shop.name"*/
         FROM good g
-        INNER JOIN shop s ON g.shop_id = s.shop_id
+        /*INNER JOIN shop s ON g.shop_id = s.shop_id*/
         <where>
             <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
         </where>
@@ -40,7 +40,7 @@
     <select id="queryGoodsCountByParams" resultType="int">
         SELECT COUNT(*)
         FROM good g
-        INNER JOIN shop s ON g.shop_id = s.shop_id
+        /*INNER JOIN shop s ON g.shop_id = s.shop_id*/
         <where>
             <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
         </where>

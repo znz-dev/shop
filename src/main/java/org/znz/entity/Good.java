@@ -23,9 +23,9 @@ public class Good {
 
     private Date createTime;
 
-    private int shopId;
+//    private int shopId;
 
-    private Shop shop;
+//    private Shop shop;
 
     @Override
     public String toString() {
@@ -38,7 +38,7 @@ public class Good {
                 ", sales=" + sales +
                 ", remainder=" + remainder +
                 ", createTime=" + createTime +
-                ", shop=" + shop +
+//                ", shop=" + shop +
                 '}';
     }
 
@@ -106,19 +106,19 @@ public class Good {
         this.createTime = createTime;
     }
 
-    public int getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
-    }
-
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
+//    public int getShopId() {
+//        return shopId;
+//    }
+//
+//    public void setShopId(int shopId) {
+//        this.shopId = shopId;
+//    }
+//
+//    public Shop getShop() {
+//        return shop;
+//    }
+//
+//    public void setShop(Shop shop) {
+//        this.shop = shop;
+//    }
 }
