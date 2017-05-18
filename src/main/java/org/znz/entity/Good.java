@@ -23,6 +23,8 @@ public class Good {
 
     private Date createTime;
 
+    private int categoryId;
+
 //    private int shopId;
 
 //    private Shop shop;
@@ -121,4 +123,12 @@ public class Good {
 //    public void setShop(Shop shop) {
 //        this.shop = shop;
 //    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 }

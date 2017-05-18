@@ -12,7 +12,7 @@ import org.znz.service.GoodService;
 /**
  * Created by zhouxin on 17-5-7.
  */
-@CrossOrigin(origins = "http://domain2.com", maxAge = 3600)
+@CrossOrigin
 @Controller
 @RequestMapping("/good")
 public class GoodController {
