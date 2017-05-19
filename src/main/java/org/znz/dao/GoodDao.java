@@ -15,5 +15,10 @@ public interface GoodDao {
     Good queryGoodById(int goodId);
 
     List<Good> queryGoodsByParams(@Param("good") Good good, @Param("offset") int offset, @Param("limit") int limit);
+
     int queryGoodsCountByParams(@Param("good") Good good);
+
+    int deleteGoodById(int goodId);
+
+    int updateGoodByParams(Good good);
 }

@@ -54,10 +54,37 @@ public class GoodServiceImpl implements GoodService {
             if (count <= 0) {
                 return new View<GoodDetail>(false, "插入失败");
             }
-            //TODO 判断新增的商品是否属于某一个店铺
             return new View<GoodDetail>(true, "插入成功");
         } catch (Exception e) {
             return new View<GoodDetail>(false, e.getMessage());
+        }
+    }
+
+    public View deleteGoodById(int goodId) {
+        try {
+            int count;
+            count = goodDao.deleteGoodById(goodId);
+            if (count <= 0) {
+                return new View<GoodDetail>(false, "删除失败");
+            }
+            return new View(true, "删除成功");
+        } catch (Exception e) {
+            return new View(false, e.getMessage());
+        }
+    }
+
+    public View updateGoodByParams(int goodId, Good good) {
+        good.setGoodId(goodId);
+        try {
+            int count;
+            count = goodDao.updateGoodByParams(good);
+            if (count <= 0) {
+                return new View(false, "更新失败");
+            }
+            GoodDetail goodDetail = new GoodDetail(goodDao.queryGoodById(goodId));
+            return new View<GoodDetail>(goodDetail);
+        } catch (Exception e) {
+            return new View(false, e.getMessage());
         }
     }
 

@@ -45,4 +45,25 @@ public class GoodController {
     public View<GoodDetail> show(@PathVariable("goodId")int goodId){
        return goodService.getGoodById(goodId);
     }
+
+    /**
+     *
+     * 删除指定商品
+     */
+    @RequestMapping(value = "/{goodId}", method = RequestMethod.DELETE, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View destroy(@PathVariable("goodId")int goodId){
+        return goodService.deleteGoodById(goodId);
+    }
+
+    /**
+     *
+     * 修改指定商品
+     */
+    @RequestMapping(value = "/{goodId}", method = RequestMethod.PUT, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View update(@PathVariable("goodId")int goodId,
+                       @ModelAttribute Good good){
+        return goodService.updateGoodByParams(goodId, good);
+    }
 }

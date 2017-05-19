@@ -16,4 +16,8 @@ public interface GoodService {
 
     View<GoodDetail> createGoodByParams(Good good);
 
+    View deleteGoodById(int goodId);
+
+    View<GoodDetail> updateGoodByParams(int goodId, Good good);
+
 }

@@ -46,5 +46,27 @@
         </where>
     </select>
 
+    <delete id="deleteGoodById">
+        DELETE FROM
+            good
+        WHERE
+            good_id = #{goodId}
+    </delete>
+
+    <update id="updateGoodByParams" parameterType="Good">
+        UPDATE
+            good
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="sales != null">sales = #{sales},</if>
+            <if test="remainder != null">remainder = #{remainder},</if>
+            <if test="categoryId != null">category_id = #{categoryId}</if>
+        </set>
+        WHERE
+            good_id = #{goodId}
+    </update>
 
 </mapper>
