@@ -13,9 +13,6 @@ import org.znz.service.MessageService;
 import org.znz.service.UserService;
 
 
-/**
- * Created by zhouxin on 17-5-4.
- */
 @CrossOrigin
 @Controller
 @RequestMapping("/user")

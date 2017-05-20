@@ -2,10 +2,12 @@ package org.znz.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.znz.dao.CustomDao;
 import org.znz.dao.GoodDao;
 import org.znz.dto.common.View;
 import org.znz.dto.good.GoodDetail;
 import org.znz.dto.good.GoodList;
+import org.znz.entity.Custom;
 import org.znz.entity.Good;
 import org.znz.service.GoodService;
 
@@ -20,12 +22,18 @@ public class GoodServiceImpl implements GoodService {
     @Autowired
     private GoodDao goodDao;
 
+    @Autowired
+    private CustomDao customDao;
+
     public View<GoodDetail> getGoodById(int goodId) {
         Good good = goodDao.queryGoodById(goodId);
         if (good == null) {
             return new View<GoodDetail>(false, "不存在该商品");
         }
-        return new View<GoodDetail>(new GoodDetail(good));
+        List<Custom> customList = customDao.queryCustomsByGoodId(goodId);
+        GoodDetail goodDetail = new GoodDetail(good);
+        goodDetail.setCustomList(customList);
+        return new View<GoodDetail>(goodDetail);
     }
 
     public View<GoodList> getGoodsByParams(Good good, int page, int size) {

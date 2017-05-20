@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.znz.dao.CustomDao">
+
+    <insert id="createCustomByParams">
+        INSERT INTO custom
+        (custom_id, good_id, name)
+        VALUES
+        (#{customId},
+        #{goodId},
+        #{name}
+        )
+    </insert>
+
+    <update id="updateCustomByParams">
+        UPDATE
+            custom
+        SET
+            name = #{name}
+        WHERE
+            custom_id = #{customId}
+    </update>
+
+    <delete id="deleteCustromByParams" parameterType="int">
+        DELETE FROM
+            custom
+        WHERE
+            custom_id = #{customId}
+    </delete>
+
+    <select id="queryCustomsByGoodId" parameterType="int" resultType="Custom">
+        SELECT
+            custom_id, name, good_id
+        FROM
+            custom
+        WHERE
+            good_id = #{goodId}
+    </select>
+
+    <select id="queryCustomCountById">
+        SELECT
+            COUNT(*)
+        FROM
+            custom
+        WHERE
+            custom_id = #{customId}
+    </select>
+
+</mapper>

@@ -1,5 +1,6 @@
 package org.znz.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.znz.dto.common.View;
 import org.znz.service.OrderService;
 
@@ -10,6 +11,7 @@ import static org.znz.helper.Validator.*;
 /**
  * Created by zhouxin on 17-5-20.
  */
+@Service
 public class OrderServiceImpl implements OrderService {
     public View createOrderByParams(Integer userId, List<Integer> goodIdList, List<Integer> goodNumberList) {
         try {
