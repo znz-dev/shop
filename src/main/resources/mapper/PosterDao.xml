@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.znz.dao.PosterDao">
+
+    <insert id="createPosterByParams">
+        INSERT INTO poster
+        (poster_id, good_id, picture)
+        VALUES
+        (
+            #{posterId},
+            #{goodId},
+            #{picture}
+        )
+    </insert>
+
+    <select id="queryPostersByParams" resultType="Poster">
+        SELECT
+            poster_id, good_id, picture, create_time
+        FROM
+            poster
+    </select>
+
+    <delete id="deletePosterById">
+        DELETE FROM
+            poster
+        WHERE
+            poster_id = #{posterId}
+    </delete>
+
+</mapper>

@@ -1,4 +1,4 @@
-package org.znz.dto.Order;
+package org.znz.dto.order;
 
 /**
  * Created by zhouxin on 17-5-10.
