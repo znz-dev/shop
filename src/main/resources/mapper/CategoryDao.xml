@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.znz.dao.CategoryDao">
+
+    <insert id="createCategoryByParams">
+        INSERT INTO category
+        (category_id, name)
+        VALUES
+        (#{categoryId},
+        #{name}
+        )
+    </insert>
+
+    <select id="queryCategoriesByParams" resultType="Category">
+        SELECT
+            category_id, name, create_time
+        FROM
+            category
+    </select>
+
+    <update id="updateCategoryByParams">
+        UPDATE
+            category
+        SET
+            name = #{name}
+        WHERE
+            category_id = #{categoryId}
+    </update>
+
+    <delete id="deleteCategoryById">
+        DELETE FROM
+            category
+        WHERE
+            category_id = #{categoryId}
+    </delete>
+
+</mapper>
