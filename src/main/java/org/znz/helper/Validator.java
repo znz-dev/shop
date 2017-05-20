@@ -1,5 +1,6 @@
 package org.znz.helper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,5 +14,12 @@ public class Validator {
             }
         }
         return false;
+    }
+
+    public static List RemoveAllNull(List list) {
+        List e = new ArrayList(1);
+        e.add(null);
+        list.removeAll(e);
+        return list;
     }
 }

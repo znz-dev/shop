@@ -24,6 +24,6 @@ public class FavorController {
     @RequestMapping(value = "/{favorId}", method = RequestMethod.DELETE, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View destroy(@PathVariable("favorId") Integer favorId) {
-        return null;
+        return favorService.deleteFavorById(favorId);
     }
 }

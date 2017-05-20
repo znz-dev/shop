@@ -10,9 +10,10 @@ import org.znz.helper.Validator;
 
 import javax.annotation.Resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.znz.helper.Validator.RemoveAllNull;
 
 /**
  * Created by zhouxin on 17-5-2.
@@ -60,6 +61,23 @@ public class UserDaoTest {
         user.setUserId(1000);
         int count = userDao.updateUserByParams(user);
         System.out.println(count);
+    }
+
+    @Test
+    public void dddccc() throws Exception {
+        List<Integer> a = new ArrayList<Integer>(10);
+        a.add(1);
+        a.add(2);
+        a.add(null);
+        a.add(14);
+        a.add(null);
+        a.add(15);
+//        List<Integer> e = new ArrayList<Integer>(1);
+//        e.add(null);
+//        a.removeAll(e);
+        a = RemoveAllNull(a);
+        System.out.println(a.size());
+        System.out.println(a);
     }
 
 }
