@@ -32,6 +32,7 @@
         /*INNER JOIN shop s ON g.shop_id = s.shop_id*/
         <where>
             <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
+            <if test="good.categoryId != 0">AND g.category_id = #{good.categoryId}</if>
         </where>
         order by create_time DESC
         limit #{offset}, #{limit}
@@ -43,6 +44,7 @@
         /*INNER JOIN shop s ON g.shop_id = s.shop_id*/
         <where>
             <if test="good.name != null">g.name LIKE '%' #{good.name} '%'</if>
+            <if test="good.categoryId != 0">AND g.category_id = #{good.categoryId}</if>
         </where>
     </select>
 
