@@ -18,7 +18,7 @@
     </insert>
 
     <select id="queryGoodById" resultType="Good" parameterType="int">
-        SELECT g.good_id, g.name, g.price, g.status, g.description, g.sales, g.remainder, g.create_time
+        SELECT g.good_id, g.name, g.price, g.status, g.description, g.sales, g.remainder, g.create_time, g.category_id
 
         FROM good g
 
@@ -26,7 +26,7 @@
     </select>
 
     <select id="queryGoodsByParams" resultType="Good">
-        SELECT g.good_id, g.name, g.price, g.status, g.description, /*g.shop_id,*/ g.sales, g.remainder, g.create_time/*,
+        SELECT g.good_id, g.name, g.price, g.status, g.description, /*g.shop_id,*/ g.sales, g.remainder, g.category_id, g.create_time/*,
         s.name as "shop.name"*/
         FROM good g
         /*INNER JOIN shop s ON g.shop_id = s.shop_id*/
@@ -61,7 +61,6 @@
             <if test="price != null">price = #{price},</if>
             <if test="status != null">status = #{status},</if>
             <if test="description != null">description = #{description},</if>
-            <if test="sales != null">sales = #{sales},</if>
             <if test="remainder != null">remainder = #{remainder},</if>
             <if test="categoryId != null">category_id = #{categoryId}</if>
         </set>
