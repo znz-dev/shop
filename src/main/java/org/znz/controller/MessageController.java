@@ -11,7 +11,7 @@ import org.znz.service.MessageService;
 /**
  * Created by zhouxin on 17-5-8.
  */
-@CrossOrigin(origins = "http://domain2.com", maxAge = 3600)
+@CrossOrigin
 @Controller
 @RequestMapping("/message")
 public class MessageController {
