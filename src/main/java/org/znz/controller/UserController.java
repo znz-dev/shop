@@ -8,8 +8,10 @@ import org.znz.dto.message.MessageList;
 import org.znz.dto.user.UserDetail;
 import org.znz.dto.user.UserList;
 import org.znz.entity.Message;
+import org.znz.entity.Order;
 import org.znz.entity.User;
 import org.znz.service.MessageService;
+import org.znz.service.OrderService;
 import org.znz.service.UserService;
 
 
@@ -23,6 +25,9 @@ public class UserController {
 
     @Autowired
     private MessageService messageService;
+
+    @Autowired
+    private OrderService orderService;
 
     /**
      * 根据用户id查询用户
@@ -89,5 +94,14 @@ public class UserController {
                                          @RequestParam(value = "size", defaultValue = "6") Integer size) {
 
         return messageService.getMessagesByParams(message, userId, page, size);
+    }
+
+    @RequestMapping(value = "/{userId}/orderList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View orderList(@ModelAttribute Order order,
+                          @RequestParam(value = "page", defaultValue = "1") Integer page,
+                          @RequestParam(value = "size", defaultValue = "6") Integer size) {
+
+        return orderService.getOrdersByParams(order, page, size);
     }
 }

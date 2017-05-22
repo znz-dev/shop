@@ -18,7 +18,7 @@ public class Order {
 
     private String address;
 
-    private String reveiver;
+    private String receiver;
 
     private String phone;
 
@@ -62,6 +62,10 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
+    public void addTotalPrice(float totalPrice) {
+        this.totalPrice += totalPrice;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -70,12 +74,12 @@ public class Order {
         this.address = address;
     }
 
-    public String getReveiver() {
-        return reveiver;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setReveiver(String reveiver) {
-        this.reveiver = reveiver;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     public String getPhone() {

@@ -19,10 +19,21 @@ public class OrderController
 
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
-    public void create(@RequestParam("goodIdList") List<Integer> goodIdList,
+    public View create(@RequestParam("goodIdList") List<Integer> goodIdList,
                        @RequestParam("goodNumberList") List<Integer> goodNumberList,
+                       @RequestParam("optionIdList") List<Integer> optionIdList,
                        @ModelAttribute Order order) {
+        return orderService.createOrderByParams(order, goodIdList, goodNumberList, optionIdList);
 
+    }
+
+    @RequestMapping(value = "/orderList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View index(@ModelAttribute Order order,
+                      @RequestParam(value = "page", defaultValue = "1") Integer page,
+                      @RequestParam(value = "size", defaultValue = "6") Integer size) {
+
+        return orderService.getOrdersByParams(order, page, size);
     }
 
 }

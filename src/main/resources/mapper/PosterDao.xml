@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.znz.dao.PosterDao">
 
-    <insert id="createPosterByParams">
+    <insert id="createPosterByParams" keyProperty="posterId">
         INSERT INTO poster
         (poster_id, good_id, picture)
         VALUES

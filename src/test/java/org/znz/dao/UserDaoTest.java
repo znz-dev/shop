@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.znz.entity.Poster;
 import org.znz.entity.User;
 import org.znz.helper.Validator;
 
@@ -24,6 +25,9 @@ import static org.znz.helper.Validator.RemoveAllNull;
 public class UserDaoTest {
     @Resource
     private UserDao userDao;
+
+    @Resource
+    private PosterDao posterDao;
 
     @Test
     public void queryUserById() throws Exception {
@@ -66,7 +70,7 @@ public class UserDaoTest {
     @Test
     public void dddccc() throws Exception {
         List<Integer> a = new ArrayList<Integer>(10);
-        a.add(1);
+        a.add(7);
         a.add(2);
         a.add(null);
         a.add(14);
@@ -78,6 +82,19 @@ public class UserDaoTest {
         a = RemoveAllNull(a);
         System.out.println(a.size());
         System.out.println(a);
+        for(int i = 0; i < a.size(); i++) {
+            System.out.println(a.get(i));
+        }
+    }
+
+    @Test
+    public void createOrder() throws Exception {
+        Poster poster = new Poster();
+        poster.setPicture("342342");
+        poster.setGoodId(1);
+        System.out.println(poster.getPosterId());
+        posterDao.createPosterByParams(poster);
+        System.out.println(poster.getPosterId());
     }
 
 }
