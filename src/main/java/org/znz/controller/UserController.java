@@ -79,15 +79,16 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View<UserDetail> register(@ModelAttribute User user,
-                                     @RequestParam("file") CommonsMultipartFile file) throws IOException {
-        if (!file.isEmpty()) {
-            String rootPath = System.getProperty("shop.webRootPath");
-            String filePath = "/upload/picture/avatar/" + file.getOriginalFilename();
-            String path = rootPath + filePath;
-            file.transferTo(new File(path));
-            user.setAvatar(filePath);
-        } else {
-            user.setAvatar(null);
+                                     @RequestParam(value = "file", required = false) CommonsMultipartFile file) throws IOException {
+        user.setAvatar(null);
+        if (file != null) {
+            if (!file.isEmpty()) {
+                String rootPath = System.getProperty("shop.webRootPath");
+                String filePath = "/upload/picture/avatar/" + file.getOriginalFilename();
+                String path = rootPath + filePath;
+                file.transferTo(new File(path));
+                user.setAvatar(filePath);
+            }
         }
 
         return userService.registerUserByParams(user);
@@ -96,16 +97,8 @@ public class UserController {
     @RequestMapping(value = "/{userId}", method = RequestMethod.PUT, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public View<UserDetail> update(@PathVariable("userId") int userId, @ModelAttribute User user,
-                                   @RequestParam("file") CommonsMultipartFile file) throws IOException {
-        if (!file.isEmpty()) {
-            String rootPath = System.getProperty("shop.webRootPath");
-            String filePath = "/upload/picture/avatar/" + file.getOriginalFilename();
-            String path = rootPath + filePath;
-            file.transferTo(new File(path));
-            user.setAvatar(filePath);
-        } else {
-            user.setAvatar(null);
-        }
+                                   @RequestParam(value = "file", required = false) CommonsMultipartFile file) throws IOException {
+        user.setAvatar(null);
         return userService.updateUserByParams(userId, user);
     }
 
