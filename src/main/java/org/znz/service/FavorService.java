@@ -11,5 +11,5 @@ public interface FavorService {
 
     View deleteFavorById(Integer favorId);
 
-    View getFavorsByUserId(Integer userId);
+    View getFavorsByUserId(Integer userId, Integer page, Integer size);
 }

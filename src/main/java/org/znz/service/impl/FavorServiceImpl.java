@@ -6,10 +6,13 @@ import org.znz.dao.FavorDao;
 import org.znz.dao.GoodDao;
 import org.znz.dao.UserDao;
 import org.znz.dto.common.View;
+import org.znz.dto.favor.FavorList;
 import org.znz.entity.Favor;
 import org.znz.entity.Good;
 import org.znz.entity.User;
 import org.znz.service.FavorService;
+
+import java.util.List;
 
 /**
  * Created by zhouxin on 17-5-20.
@@ -62,7 +65,22 @@ public class FavorServiceImpl implements FavorService {
         }
     }
 
-    public View getFavorsByUserId(Integer userId) {
-        return null;
+    public View getFavorsByUserId(Integer userId, Integer page, Integer size) {
+        try {
+
+            if (page <= 0) {
+                page = 1;
+            }
+            if (size<= 0) {
+                size = 6;
+            }
+            int offset = (page -1)*size;
+            List<Favor> favorList = favorDao.queryFavorsByUserId(userId, offset, size);
+            int count = favorDao.queryFavorsCountByUserId(userId);
+            int pages = (count + size - 1) / size;
+            return new View(new FavorList(favorList, pages));
+        } catch(Exception e) {
+            return new View(false, e.getMessage());
+        }
     }
 }

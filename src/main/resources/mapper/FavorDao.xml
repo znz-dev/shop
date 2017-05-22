@@ -21,20 +21,29 @@
             favor_id = #{favorId}
     </delete>
 
-    <select id="queryFavorsByUserId" parameterType="int">
+    <select id="queryFavorsByUserId" parameterType="int" resultType="Favor">
         SELECT
         f.favor_id, f.good_id, f.user_id,
         g.good_id AS "good.goodId",
         g.name AS "good.name",
         g.price AS "good.price"
-        FROM Favor f
+        FROM favor f
         INNER JOIN good g ON f.good_id = g.good_id
         INNER JOIN user u ON f.user_id = u.user_id
         WHERE
         f.user_id = #{userId}
         order by
-        create_time DESC
+        f.create_time DESC
         limit #{offset}, #{limit}
+    </select>
+
+    <select id="queryFavorsCountByUserId" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            favor
+        WHERE
+            user_id = #{userId}
     </select>
 
     <select id="queryFavorsCount" parameterType="Favor" resultType="int">

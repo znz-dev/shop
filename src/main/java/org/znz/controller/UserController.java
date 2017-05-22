@@ -11,6 +11,7 @@ import org.znz.dto.user.UserList;
 import org.znz.entity.Message;
 import org.znz.entity.Order;
 import org.znz.entity.User;
+import org.znz.service.FavorService;
 import org.znz.service.MessageService;
 import org.znz.service.OrderService;
 import org.znz.service.UserService;
@@ -32,6 +33,9 @@ public class UserController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private FavorService favorService;
 
     /**
      * 根据用户id查询用户
@@ -119,6 +123,16 @@ public class UserController {
                           @RequestParam(value = "size", defaultValue = "6") Integer size) {
 
         return orderService.getOrdersByParams(order, page, size);
+    }
+
+
+    @RequestMapping(value = "/{userId}/favorList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View orderList(@PathVariable("userId") Integer userId,
+                          @RequestParam(value = "page", defaultValue = "1") Integer page,
+                          @RequestParam(value = "size", defaultValue = "6") Integer size) {
+
+        return favorService.getFavorsByUserId(userId, page, size);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
