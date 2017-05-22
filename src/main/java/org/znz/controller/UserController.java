@@ -127,4 +127,12 @@ public class UserController {
 
         return orderService.getOrdersByParams(order, page, size);
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View login(@RequestParam(value = "username") String username,
+                      @RequestParam(value = "password") String password) {
+
+        return userService.loginUserByParams(username, password);
+    }
 }

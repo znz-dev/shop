@@ -75,4 +75,19 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    public View<UserDetail> loginUserByParams(String username, String password) {
+        try {
+            User user = userDao.queryUserByName(username);
+            if (user == null) {
+                return new View(false, "用户名不存在");
+            }
+            if (!user.getPassword().equals(password)) {
+                return new View(false, "密码错误");
+            }
+            return new View<UserDetail>(new UserDetail(user));
+        } catch (Exception e) {
+            return new View<UserDetail>(false, e.getMessage());
+        }
+    }
 }

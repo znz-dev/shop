@@ -21,4 +21,6 @@ public interface UserService {
     View<UserDetail> registerUserByParams(User user);
 //
     View<UserDetail> updateUserByParams(int userId, User user);
+
+    View<UserDetail> loginUserByParams(String username, String password);
 }
