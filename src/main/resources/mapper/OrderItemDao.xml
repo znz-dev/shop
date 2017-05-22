@@ -6,21 +6,23 @@
 
     <insert id="createOrderItemByParams">
         INSERT INTO order_item
-        (item_id, order_id, good_id, price, number, option_id)
+        (item_id, order_id, good_id, good_name, price, number, custom_id, custom_name)
         VALUES
         (
         #{itemId},
         #{orderId},
         #{goodId},
+        #{goodName},
         #{price},
         #{number},
-        #{optionId}
+        #{customId},
+        #{customName}
         )
     </insert>
 
     <select id="queryOrderItemsByOrderId" resultType="OrderItem">
         SELECT
-            item_id, order_id, good_id, price, number, option_id
+            item_id, order_id, good_id, good_name, price, number, custom_id, custom_name
         FROM
             order_item
         WHERE

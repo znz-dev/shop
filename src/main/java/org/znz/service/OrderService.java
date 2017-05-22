@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface OrderService {
     View createOrderByParams(Order order,
-                             List<Integer> goodIdList, List<Integer> goodNumberList, List<Integer> optionIdList);
+                             List<Integer> goodIdList, List<Integer> goodNumberList, List<Integer> customIdList);
 
     View getOrdersByParams(Order order, Integer page, Integer size);
 

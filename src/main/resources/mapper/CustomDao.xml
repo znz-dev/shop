@@ -39,9 +39,9 @@
             good_id = #{goodId}
     </select>
 
-    <select id="queryCustomCountById">
+    <select id="queryCustomById" resultType="Custom">
         SELECT
-            COUNT(*)
+            custom_id, name, good_id
         FROM
             custom
         WHERE

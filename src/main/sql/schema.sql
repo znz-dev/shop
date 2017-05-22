@@ -97,7 +97,7 @@ CREATE TABLE remark(
   PRIMARY KEY (remark_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品图片表';
 
--- 商品定制表
+-- 商品规格
 CREATE TABLE custom(
   custom_id INT NOT NULL AUTO_INCREMENT COMMENT '商品选项ID',
   good_id INT NOT NULL COMMENT '商品ID',
@@ -136,9 +136,11 @@ CREATE TABLE order_item(
   item_id INT NOT NULL AUTO_INCREMENT COMMENT '子项ID',
   order_id INT NOT NULL COMMENT '订单ID',
   good_id INT NOT NULL COMMENT '商品ID',
+  good_name VARCHAR(20) NOT NULL COMMENT '商品名',
   price FLOAT NOT NULL COMMENT '商品单价',
   number INT NOT NULL COMMENT '商品数量',
-  option_id INT NOT NULL COMMENT '商品选项ID',
+  custom_id INT NOT NULL COMMENT '商品选项ID',
+  custom_name VARCHAR(20) NOT NULL COMMENT '规格详细名称',
   create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (item_id)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订单子项表';
@@ -151,15 +153,6 @@ CREATE TABLE poster(
   create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (poster_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品海报表';
-
--- 商品收藏表
-CREATE TABLE collection(
-  collection_id INT NOT NULL AUTO_INCREMENT COMMENT '收藏ID',
-  good_id INT NOT NULL COMMENT '商品ID',
-  user_id INT NOT NULL COMMENT '用户ID',
-  create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (collection_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品收藏表';
 
 -- 商品收藏表
 CREATE TABLE favor(

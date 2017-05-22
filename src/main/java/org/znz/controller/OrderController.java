@@ -21,9 +21,9 @@ public class OrderController
     @ResponseBody
     public View create(@RequestParam("goodIdList") List<Integer> goodIdList,
                        @RequestParam("goodNumberList") List<Integer> goodNumberList,
-                       @RequestParam("optionIdList") List<Integer> optionIdList,
+                       @RequestParam("customIdList") List<Integer> customIdList,
                        @ModelAttribute Order order) {
-        return orderService.createOrderByParams(order, goodIdList, goodNumberList, optionIdList);
+        return orderService.createOrderByParams(order, goodIdList, goodNumberList, customIdList);
 
     }
 

@@ -2,12 +2,14 @@ package org.znz.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.znz.dao.CustomDao;
 import org.znz.dao.GoodDao;
 import org.znz.dao.OrderDao;
 import org.znz.dao.OrderItemDao;
 import org.znz.dto.common.View;
 import org.znz.dto.order.OrderDetail;
 import org.znz.dto.order.OrderList;
+import org.znz.entity.Custom;
 import org.znz.entity.Good;
 import org.znz.entity.Order;
 import org.znz.entity.OrderItem;
@@ -32,20 +34,23 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderItemDao orderItemDao;
 
+    @Autowired
+    private CustomDao customDao;
+
     public View createOrderByParams(Order order,
                                     List<Integer> goodIdList,
                                     List<Integer> goodNumberList,
-                                    List<Integer> optionIdList) {
+                                    List<Integer> customIdList) {
         try {
             order.setTotalPrice(0f);
             List<OrderItem> itemList = new ArrayList<OrderItem>();
             goodIdList = RemoveAllNull(goodIdList);
             goodNumberList = RemoveAllNull(goodNumberList);
-            optionIdList = RemoveAllNull(optionIdList);
+            customIdList = RemoveAllNull(customIdList);
             if(goodIdList.size() != goodNumberList.size() || goodIdList.size() == 0) {
                 return new View(false, "参数错误");
             }
-            if(goodIdList.size() != optionIdList.size()) {
+            if(goodIdList.size() != customIdList.size()) {
                 return new View(false, "参数错误");
             }
             for (int i = 0; i < goodIdList.size(); i++) {
@@ -53,11 +58,20 @@ public class OrderServiceImpl implements OrderService {
                 if (good == null) {
                     return new View(false, "商品不存在");
                 }
+                Custom custom = customDao.queryCustomById(customIdList.get(i));
+                if (custom == null) {
+                    return new View(false, "商品规格不存在");
+                }
+                if (goodNumberList.get(i) <= 0) {
+                    return new View(false, "商品数量有误");
+                }
                 OrderItem orderItem = new OrderItem();
                 orderItem.setGoodId(good.getGoodId());
+                orderItem.setGoodName(good.getName());
                 orderItem.setPrice(good.getPrice());
                 orderItem.setNumber(goodNumberList.get(i));
-                orderItem.setOptionId(optionIdList.get(i));
+                orderItem.setCustomId(custom.getCustomId());
+                orderItem.setCustomName(custom.getName());
                 order.addTotalPrice(good.getPrice() * goodNumberList.get(i));
                 itemList.add(orderItem);
             }

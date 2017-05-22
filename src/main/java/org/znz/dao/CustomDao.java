@@ -16,5 +16,6 @@ public interface CustomDao {
 
     List<Custom> queryCustomsByGoodId(Integer goodId);
 
-    int queryCustomCountById(Integer customId);
+    Custom queryCustomById(Integer customId);
+
 }

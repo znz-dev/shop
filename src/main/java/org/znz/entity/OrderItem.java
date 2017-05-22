@@ -11,12 +11,15 @@ public class OrderItem {
 
     private Integer goodId;
 
+    private String goodName;
+
     private float price;
 
     private Integer number;
 
-    private Integer optionId;
+    private Integer customId;
 
+    private String customName;
 
     public Integer getItemId() {
         return itemId;
@@ -58,11 +61,27 @@ public class OrderItem {
         this.number = number;
     }
 
-    public Integer getOptionId() {
-        return optionId;
+    public String getGoodName() {
+        return goodName;
     }
 
-    public void setOptionId(Integer optionId) {
-        this.optionId = optionId;
+    public void setGoodName(String goodName) {
+        this.goodName = goodName;
+    }
+
+    public Integer getCustomId() {
+        return customId;
+    }
+
+    public void setCustomId(Integer customId) {
+        this.customId = customId;
+    }
+
+    public String getCustomName() {
+        return customName;
+    }
+
+    public void setCustomName(String customName) {
+        this.customName = customName;
     }
 }
