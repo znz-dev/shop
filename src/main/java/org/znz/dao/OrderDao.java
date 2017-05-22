@@ -13,5 +13,7 @@ public interface OrderDao {
 
     List<Order> queryOrdersByParams(@Param("order") Order order, @Param("offset") int offset, @Param("limit") int limit);
 
+    Order queryOrderById(Integer orderId);
+
     int queryOrdersCountByParams(@Param("order") Order order);
 }

@@ -36,4 +36,17 @@ public class OrderController
         return orderService.getOrdersByParams(order, page, size);
     }
 
+    @RequestMapping(value = "/{orderId}", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View show(@PathVariable("orderId") Integer orderId) {
+
+        return orderService.getOrderById(orderId);
+    }
+
+    @RequestMapping(value = "/{orderId}", method = RequestMethod.PUT, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View update(@ModelAttribute Order order) {
+
+        return orderService.updateOrderByParams(order);
+    }
 }

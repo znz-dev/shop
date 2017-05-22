@@ -13,4 +13,8 @@ public interface OrderService {
                              List<Integer> goodIdList, List<Integer> goodNumberList, List<Integer> optionIdList);
 
     View getOrdersByParams(Order order, Integer page, Integer size);
+
+    View getOrderById(Integer orderId);
+
+    View updateOrderByParams(Order order);
 }

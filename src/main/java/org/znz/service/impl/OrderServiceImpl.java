@@ -6,6 +6,7 @@ import org.znz.dao.GoodDao;
 import org.znz.dao.OrderDao;
 import org.znz.dao.OrderItemDao;
 import org.znz.dto.common.View;
+import org.znz.dto.order.OrderDetail;
 import org.znz.dto.order.OrderList;
 import org.znz.entity.Good;
 import org.znz.entity.Order;
@@ -85,6 +86,29 @@ public class OrderServiceImpl implements OrderService {
             int count = orderDao.queryOrdersCountByParams(order);
             int pages = (count + size - 1) / size;
             return new View(new OrderList(pages, orderList));
+        } catch (Exception e) {
+            return new View(false, e.getMessage());
+        }
+    }
+
+    public View getOrderById(Integer orderId) {
+        try {
+            Order order = orderDao.queryOrderById(orderId);
+            List<OrderItem> orderItemList = orderItemDao.queryOrderItemsByOrderId(orderId);
+            return new View(new OrderDetail(order, orderItemList));
+        } catch (Exception e) {
+            return new View(false, e.getMessage());
+        }
+    }
+
+    public View updateOrderByParams(Order order) {
+        try {
+            int count;
+            count = orderDao.updateOrderByParams(order);
+            if (count <= 0) {
+                return new View(false, "更新失败");
+            }
+            return new View(true, "更新成功");
         } catch (Exception e) {
             return new View(false, e.getMessage());
         }

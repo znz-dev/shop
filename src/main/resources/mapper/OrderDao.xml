@@ -52,4 +52,13 @@
         </where>
     </select>
 
+    <select id="queryOrderById" resultType="Order">
+        SELECT
+            order_id, user_id, create_time, status, total_price, address, receiver, phone
+        FROM
+            order_form
+        WHERE
+            order_id = #{orderId}
+    </select>
+
 </mapper>

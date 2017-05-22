@@ -18,18 +18,13 @@
         )
     </insert>
 
-    <!--<select id="queryPostersByParams" resultType="Poster">
+    <select id="queryOrderItemsByOrderId" resultType="OrderItem">
         SELECT
-        poster_id, good_id, picture, create_time
+            item_id, order_id, good_id, price, numeber, option_id
         FROM
-        poster
-    </select>
-
-    <delete id="deletePosterById">
-        DELETE FROM
-        poster
+            order_item
         WHERE
-        poster_id = #{posterId}
-    </delete>-->
+            order_id = #{orderId}
+    </select>
 
 </mapper>
