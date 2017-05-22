@@ -10,7 +10,7 @@ CREATE TABLE user(
   phone VARCHAR(20) COMMENT '电话号码',
   email VARCHAR(30) COMMENT '邮箱地址',
   real_name VARCHAR(10) COMMENT '真实姓名',
-  avatar VARCHAR(50) COMMENT '用户头像',
+  avatar VARCHAR(200) COMMENT '用户头像',
   description VARCHAR(100) COMMENT '用户介绍',
   create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (user_id)

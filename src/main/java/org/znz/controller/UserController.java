@@ -3,6 +3,7 @@ package org.znz.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.znz.dto.common.View;
 import org.znz.dto.message.MessageList;
 import org.znz.dto.user.UserDetail;
@@ -13,6 +14,9 @@ import org.znz.entity.User;
 import org.znz.service.MessageService;
 import org.znz.service.OrderService;
 import org.znz.service.UserService;
+
+import java.io.File;
+import java.io.IOException;
 
 
 @CrossOrigin
@@ -74,15 +78,34 @@ public class UserController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
-    public View<UserDetail> register(@ModelAttribute User user) {
+    public View<UserDetail> register(@ModelAttribute User user,
+                                     @RequestParam("file") CommonsMultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            String rootPath = System.getProperty("shop.webRootPath");
+            String filePath = "/upload/picture/avatar/" + file.getOriginalFilename();
+            String path = rootPath + filePath;
+            file.transferTo(new File(path));
+            user.setAvatar(filePath);
+        } else {
+            user.setAvatar(null);
+        }
 
         return userService.registerUserByParams(user);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.PUT, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
-    public View<UserDetail> update(@PathVariable("userId") int userId, @ModelAttribute User user) {
-
+    public View<UserDetail> update(@PathVariable("userId") int userId, @ModelAttribute User user,
+                                   @RequestParam("file") CommonsMultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            String rootPath = System.getProperty("shop.webRootPath");
+            String filePath = "/upload/picture/avatar/" + file.getOriginalFilename();
+            String path = rootPath + filePath;
+            file.transferTo(new File(path));
+            user.setAvatar(filePath);
+        } else {
+            user.setAvatar(null);
+        }
         return userService.updateUserByParams(userId, user);
     }
 
