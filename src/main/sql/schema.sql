@@ -137,7 +137,7 @@ CREATE TABLE order_item(
   order_id INT NOT NULL COMMENT '订单ID',
   good_id INT NOT NULL COMMENT '商品ID',
   price FLOAT NOT NULL COMMENT '商品单价',
-  numeber INT NOT NULL COMMENT '商品数量',
+  number INT NOT NULL COMMENT '商品数量',
   option_id INT NOT NULL COMMENT '商品选项ID',
   create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (item_id)
