@@ -9,7 +9,7 @@ import org.znz.entity.Message;
 import org.znz.service.MessageService;
 
 /**
- * Created by zhouxin on 17-5-8.
+ * Created by zhangbin on 17-5-8.
  */
 @CrossOrigin
 @Controller

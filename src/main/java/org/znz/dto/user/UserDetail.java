@@ -3,7 +3,7 @@ package org.znz.dto.user;
 import org.znz.entity.User;
 
 /**
- * Created by zhouxin on 17-5-5.
+ * Created by zhangbin on 17-5-5.
  */
 public class UserDetail {
     private User user;

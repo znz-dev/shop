@@ -3,7 +3,7 @@ package org.znz.dto.message;
 import org.znz.entity.Message;
 
 /**
- * Created by zhouxin on 17-5-8.
+ * Created by zhangbin on 17-5-8.
  */
 public class MessageDetail {
 

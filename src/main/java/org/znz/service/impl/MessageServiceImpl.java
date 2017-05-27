@@ -12,7 +12,7 @@ import org.znz.service.MessageService;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-8.
+ * Created by zhangbin on 17-5-8.
  */
 @Service
 public class MessageServiceImpl implements MessageService {

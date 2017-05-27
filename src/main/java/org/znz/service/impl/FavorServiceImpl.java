@@ -15,7 +15,7 @@ import org.znz.service.FavorService;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-20.
+ * Created by zhangbin on 17-5-20.
  */
 @Service
 public class FavorServiceImpl implements FavorService {

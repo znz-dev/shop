@@ -3,7 +3,7 @@ package org.znz.dto.favor;
 import org.znz.entity.Favor;
 
 /**
- * Created by zhouxin on 17-5-20.
+ * Created by zhangbin on 17-5-20.
  */
 public class FavorDetail {
     private Favor favor;

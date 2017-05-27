@@ -4,9 +4,7 @@ import org.znz.entity.Good;
 
 import java.util.List;
 
-/**
- * Created by zhouxin on 17-5-7.
- */
+
 public class GoodList {
 
     private int pages;

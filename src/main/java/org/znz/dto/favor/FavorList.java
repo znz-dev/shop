@@ -5,7 +5,7 @@ import org.znz.entity.Favor;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-20.
+ * Created by zhangbin on 17-5-20.
  */
 public class FavorList {
     private List<Favor> favorList;

@@ -13,9 +13,6 @@ import org.znz.service.GoodService;
 
 import java.util.List;
 
-/**
- * Created by zhouxin on 17-5-7.
- */
 @Service
 public class GoodServiceImpl implements GoodService {
 

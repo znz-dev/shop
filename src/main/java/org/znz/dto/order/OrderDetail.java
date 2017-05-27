@@ -6,7 +6,7 @@ import org.znz.entity.OrderItem;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-10.
+ * Created by zhangbin on 17-5-10.
  */
 public class OrderDetail {
     private Order order;

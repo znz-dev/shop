@@ -4,7 +4,7 @@ import org.znz.dto.common.View;
 import org.znz.entity.Favor;
 
 /**
- * Created by zhouxin on 17-5-20.
+ * Created by zhangbin on 17-5-20.
  */
 public interface FavorService {
     View createFavorByParams(Favor favor);

@@ -5,7 +5,7 @@ import org.znz.entity.Category;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-20.
+ * Created by zhangbin on 17-5-20.
  */
 public interface CategoryDao {
     int createCategoryByParams(Category category);

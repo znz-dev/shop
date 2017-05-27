@@ -3,7 +3,7 @@ package org.znz.entity;
 import java.util.Date;
 
 /**
- * Created by zhouxin on 17-5-20.
+ * Created by zhangbin on 17-5-20.
  */
 public class Custom {
     private Integer customId;

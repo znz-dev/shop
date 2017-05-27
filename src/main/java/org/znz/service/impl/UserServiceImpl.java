@@ -14,7 +14,7 @@ import org.znz.service.UserService;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-4.
+ * Created by zhangbin on 17-5-4.
  */
 @Service
 public class UserServiceImpl implements UserService {

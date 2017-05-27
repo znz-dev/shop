@@ -5,7 +5,7 @@
 //import java.util.List;
 //
 ///**
-// * Created by zhouxin on 17-5-2.
+// * Created by zhangbin on 17-5-2.
 // */
 //public interface ShopDao {
 //

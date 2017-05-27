@@ -11,9 +11,7 @@ import org.znz.entity.Good;
 import org.znz.service.CustomService;
 import org.znz.service.GoodService;
 
-/**
- * Created by zhouxin on 17-5-7.
- */
+
 @CrossOrigin
 @Controller
 @RequestMapping("/good")

@@ -1,8 +1,5 @@
 package org.znz.dto.common;
 
-/**
- * Created by zhouxin on 17-5-5.
- */
 public class View<T> {
     private Status status;
 

@@ -3,7 +3,7 @@ package org.znz.entity;
 import java.util.Date;
 
 /**
- * Created by zhouxin on 17-5-8.
+ * Created by zhangbin on 17-5-8.
  */
 public class Message {
 

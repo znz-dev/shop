@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-6.
+ * Created by zhangbin on 17-5-6.
  */
 public class Validator {
     public static boolean blank(String[] stringArray){

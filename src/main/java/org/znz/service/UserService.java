@@ -8,7 +8,7 @@ import org.znz.entity.User;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-3.
+ * Created by zhangbin on 17-5-3.
  */
 public interface UserService {
 

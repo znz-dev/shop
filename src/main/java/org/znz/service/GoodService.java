@@ -5,9 +5,6 @@ import org.znz.dto.good.GoodDetail;
 import org.znz.dto.good.GoodList;
 import org.znz.entity.Good;
 
-/**
- * Created by zhouxin on 17-5-7.
- */
 public interface GoodService {
 
     View<GoodDetail> getGoodById(int goodId);

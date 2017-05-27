@@ -3,7 +3,7 @@ package org.znz.entity;
 import java.util.Date;
 
 /**
- * Created by zhouxin on 17-5-10.
+ * Created by zhangbin on 17-5-10.
  */
 public class Order {
     private Integer orderId;

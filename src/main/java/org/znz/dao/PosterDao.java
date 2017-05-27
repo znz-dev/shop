@@ -5,7 +5,7 @@ import org.znz.entity.Poster;
 import java.util.List;
 
 /**
- * Created by zhouxin on 17-5-20.
+ * Created by zhangbin on 17-5-20.
  */
 public interface PosterDao {
     int createPosterByParams(Poster poster);

@@ -2,9 +2,6 @@ package org.znz.entity;
 
 import java.util.Date;
 
-/**
- * Created by zhouxin on 17-4-30.
- */
 public class Good {
 
     private int goodId;
@@ -25,24 +22,6 @@ public class Good {
 
     private int categoryId;
 
-//    private int shopId;
-
-//    private Shop shop;
-
-    @Override
-    public String toString() {
-        return "Good{" +
-                "good_id=" + goodId +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", status=" + status +
-                ", description='" + description + '\'' +
-                ", sales=" + sales +
-                ", remainder=" + remainder +
-                ", createTime=" + createTime +
-//                ", shop=" + shop +
-                '}';
-    }
 
     public int getGoodId() {
         return goodId;
@@ -107,22 +86,6 @@ public class Good {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
-//    public int getShopId() {
-//        return shopId;
-//    }
-//
-//    public void setShopId(int shopId) {
-//        this.shopId = shopId;
-//    }
-//
-//    public Shop getShop() {
-//        return shop;
-//    }
-//
-//    public void setShop(Shop shop) {
-//        this.shop = shop;
-//    }
 
     public int getCategoryId() {
         return categoryId;
