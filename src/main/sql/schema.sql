@@ -94,8 +94,10 @@ CREATE TABLE remark(
   content VARCHAR(100) NOT NULL COMMENT '评论内容',
   score INT NOT NULL COMMENT '商品评分',
   create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  good_id INT NOT NULL COMMENT '商品ID',
+  order_id INT NOT NULL COMMENT '订单ID',
   PRIMARY KEY (remark_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品图片表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品评论表';
 
 -- 商品规格
 CREATE TABLE custom(

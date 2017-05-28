@@ -8,8 +8,10 @@ import org.znz.dto.good.GoodDetail;
 import org.znz.dto.good.GoodList;
 import org.znz.entity.Custom;
 import org.znz.entity.Good;
+import org.znz.entity.Remark;
 import org.znz.service.CustomService;
 import org.znz.service.GoodService;
+import org.znz.service.RemarkService;
 
 
 @CrossOrigin
@@ -22,6 +24,9 @@ public class GoodController {
 
     @Autowired
     private CustomService customService;
+
+    @Autowired
+    private RemarkService remarkService;
 
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
@@ -88,5 +93,19 @@ public class GoodController {
     @ResponseBody
     public View deleteCustom(@PathVariable("customId") Integer customId){
         return customService.deleteCustomById(customId);
+    }
+
+    @RequestMapping(value= "/{goodId}/remark/new", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View createGoodRemark(@ModelAttribute Remark remark) {
+        return remarkService.createRemarkByParams(remark);
+    }
+
+    @RequestMapping(value="/{goodId}/remarkList", method = RequestMethod.GET, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View remarkList(@PathVariable("goodId") Integer goodId,
+                           @RequestParam(value = "page", defaultValue = "1") Integer page,
+                           @RequestParam(value = "size", defaultValue = "6") Integer size) {
+        return remarkService.getRemarksByParamsByGoodId(goodId, page, size);
     }
 }
