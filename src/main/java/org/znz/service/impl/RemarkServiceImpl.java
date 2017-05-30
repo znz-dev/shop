@@ -17,9 +17,9 @@ public class RemarkServiceImpl implements RemarkService {
 
     public View createRemarkByParams(Remark remark) {
         try {
-            int count = 0;
+            int count;
             count = remarkDao.createRemarkByParams(remark);
-            if (count == 0) {
+            if (count <= 0) {
                 return new View(false, "插入失败");
             }
             return new View(true, "插入成功");

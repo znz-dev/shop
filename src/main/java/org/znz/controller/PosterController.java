@@ -25,7 +25,7 @@ public class PosterController {
                        @RequestParam("file") CommonsMultipartFile file) throws IOException {
         if (!file.isEmpty()) {
             String rootPath = System.getProperty("shop.webRootPath");
-            String filePath = "/upload/" + file.getOriginalFilename();
+            String filePath = "/upload/picture/poster" + file.getOriginalFilename();
             String path = rootPath + filePath;
             file.transferTo(new File(path));
             poster.setPicture(filePath);

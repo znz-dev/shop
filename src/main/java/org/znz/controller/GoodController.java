@@ -3,15 +3,21 @@ package org.znz.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.znz.dto.common.View;
 import org.znz.dto.good.GoodDetail;
 import org.znz.dto.good.GoodList;
 import org.znz.entity.Custom;
 import org.znz.entity.Good;
+import org.znz.entity.Picture;
 import org.znz.entity.Remark;
 import org.znz.service.CustomService;
 import org.znz.service.GoodService;
+import org.znz.service.PictureService;
 import org.znz.service.RemarkService;
+
+import java.io.File;
+import java.io.IOException;
 
 
 @CrossOrigin
@@ -27,6 +33,9 @@ public class GoodController {
 
     @Autowired
     private RemarkService remarkService;
+
+    @Autowired
+    private PictureService pictureService;
 
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
@@ -97,7 +106,7 @@ public class GoodController {
 
     @RequestMapping(value= "/{goodId}/remark/new", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
     @ResponseBody
-    public View createGoodRemark(@ModelAttribute Remark remark) {
+    public View createRemark(@ModelAttribute Remark remark) {
         return remarkService.createRemarkByParams(remark);
     }
 
@@ -107,5 +116,28 @@ public class GoodController {
                            @RequestParam(value = "page", defaultValue = "1") Integer page,
                            @RequestParam(value = "size", defaultValue = "6") Integer size) {
         return remarkService.getRemarksByParamsByGoodId(goodId, page, size);
+    }
+
+    @RequestMapping(value="/{goodId}/picture", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View createPicture(@ModelAttribute Picture picture,
+                              @RequestParam(value = "file", required = false) CommonsMultipartFile file) throws IOException {
+        picture.setPicture(null);
+        if (file != null) {
+            if (!file.isEmpty()) {
+                String rootPath = System.getProperty("shop.webRootPath");
+                String filePath = "/upload/picture/good/" + file.getOriginalFilename();
+                String path = rootPath + filePath;
+                file.transferTo(new File(path));
+                picture.setPicture(filePath);
+            }
+        }
+        return pictureService.createPictureByParams(picture);
+    }
+
+    @RequestMapping(value="/{goodId}/picture/{pictureId}", method = RequestMethod.DELETE, produces = {"application/json; charset=UTF-8"})
+    @ResponseBody
+    public View destroyPicture(@PathVariable("pictureId") Integer pictureId) {
+        return pictureService.deletePictureById(pictureId);
     }
 }
