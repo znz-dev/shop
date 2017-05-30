@@ -18,12 +18,17 @@
 
     <select id="queryRemarksByGoodId" resultType="Remark">
         SELECT
-            remark_id, content, score, create_time, good_id, order_id
+            r.remark_id, r.content, r.score, r.create_time, r.good_id, r.order_id,
+            u.user_id AS "user.userId",
+            u.username AS "user.username",
+            u.avatar AS "user.avatar"
         FROM
-            remark
+            remark r
+        INNER JOIN order_form o ON r.order_id = o.order_id
+        INNER JOIN user u ON o.user_id = u.user_id
         WHERE
-            good_id = #{goodId}
-        order by create_time DESC
+            r.good_id = #{goodId}
+        order by r.create_time DESC
         limit #{offset}, #{limit}
     </select>
 
@@ -31,9 +36,11 @@
         SELECT
             COUNT(*)
         FROM
-            remark
+            remark r
+        INNER JOIN order_form o ON r.order_id = o.order_id
+        INNER JOIN user u ON o.user_id = u.user_id
         WHERE
-            good_id = #{goodId}
+            r.good_id = #{goodId}
     </select>
 
 </mapper>

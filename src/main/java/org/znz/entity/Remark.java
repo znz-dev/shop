@@ -15,6 +15,8 @@ public class Remark {
 
     private Integer orderId;
 
+    private User user;
+
     public Integer getRemarkId() {
         return remarkId;
     }
@@ -61,5 +63,13 @@ public class Remark {
 
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
