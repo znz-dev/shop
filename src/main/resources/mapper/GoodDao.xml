@@ -60,11 +60,11 @@
             good
         <set>
             <if test="name != null">name = #{name},</if>
-            <if test="price != null">price = #{price},</if>
-            <if test="status != null">status = #{status},</if>
+            <if test="price != 0">price = #{price},</if>
+            <if test="status != 0">status = #{status},</if>
             <if test="description != null">description = #{description},</if>
-            <if test="remainder != null">remainder = #{remainder},</if>
-            <if test="categoryId != null">category_id = #{categoryId}</if>
+            <if test="remainder != 0">remainder = #{remainder},</if>
+            <if test="categoryId != 0">category_id = #{categoryId}</if>
         </set>
         WHERE
             good_id = #{goodId}
