@@ -29,6 +29,8 @@ public class User {
 
     private Date createTime;
 
+    private Boolean isAdmin;
+
     @Override
     public String toString() {
         return "User{" +
@@ -111,5 +113,13 @@ public class User {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 }

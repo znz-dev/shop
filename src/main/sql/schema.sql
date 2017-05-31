@@ -23,6 +23,9 @@ VALUES
   (3, 'zhangbin', '123456'),
   (4, 'zhouxin', '123456');
 
+ALTER TABLE `user`
+    ADD COLUMN is_admin BOOLEAN NOT NULL DEFAULT FALSE COMMENT '是否为管理员';
+
 # -- 创建店铺表
 # CREATE TABLE shop(
 #   shop_id INT NOT NULL AUTO_INCREMENT COMMENT '店铺ID',
